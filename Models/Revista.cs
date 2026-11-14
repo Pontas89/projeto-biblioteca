@@ -1,48 +1,27 @@
-using Microsoft.Net.Http.Headers;
+namespace MinhaBiblioteca.Models;
+
 public class Revista : MaterialBiblioteca
 {
-    public int Edcao {get;init;}
-    public int Id{get;init;}
-    public int _mespubli;
+    public int Edicao { get; set; }
+
+    private int _mespubli;
+
     public int MesPublicacao
     {
-        get
-        {
-            return _mespubli;
-        }
+        get { return _mespubli; }
         set
         {
-            if(value <=1 && value >= 12)
-            {
-                Console.Write("MÊS VALIDO");
-            }
-            else
-            {
-                Console.WriteLine("ERRO! Mês invalido");
-            }
+            _mespubli = value;
         }
     }
 
-    public int QuantDias{get;set;}
     public override int CalcularPrazo()
     {
-       
-        {
-              if(_quantdias <= 7)
-               {
-                    
-                   Console.WriteLine("Prazo em dia!");
-                }
-              else
-                {
-                    Console.WriteLine("FORA DO PRAZO DE ENTREGA!!!");
-                }
-        }   
+        return 7;
     }
 
     public override string Descricao()
-        {
-            return $"REVISTA ====> ID: {Id} | Título: {Titulo} | Edição: {Edicao} | Publicação: {MesPublicacao} | Prazo: {CalcularPrazo()} dias";
-        }
-
+    {
+        return $"REVISTA ====> ID: {Id} | Título: {Titulo} | Edição: {Edicao} | Publicação: {MesPublicacao} | Prazo: {CalcularPrazo()} dias";
+    }
 }

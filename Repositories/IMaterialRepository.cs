@@ -1,6 +1,8 @@
+using MinhaBiblioteca.Models;
 using System.Collections.Generic;
 
 namespace MinhaBiblioteca.Repositories;
+
 public interface IMaterialRepository
 {
     IEnumerable<MaterialBiblioteca> ObterTodos();

@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Mvc;
 using MinhaBiblioteca.Models;
 using MinhaBiblioteca.Repositories;
@@ -164,7 +163,7 @@ public class MateriaisController : ControllerBase
 
         _repository.Remover(id);
 
-        return Ok("Material removido com sucesso.");
+        return NoContent();
     }
 
     // GET: api/Materiais/5/descricao
