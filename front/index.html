@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Biblioteca</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="p-3">
+
+        <!-- Cabeçalho -->
+        <header class="mb-4">
+            <h1>Biblioteca Universitária</h1>
+        </header>
+
+        <!-- Mensagens -->
+        <p id="mensagem-sucesso"></p>
+        <p id="mensagem-erro"></p>
+
+        <!-- Resumo do acervo -->
+        <section id="resumo" class="mb-4">
+            <h2>Resumo do acervo</h2>
+
+            <p>Total de materiais: <span id="total-materiais">—</span></p>
+            <p>Livros: <span id="total-livros">—</span></p>
+            <p>Revistas: <span id="total-revistas">—</span></p>
+        </section>
+
+        <!-- Lista de materiais -->
+        <section id="acervo" class="mb-4">
+            <h2 id="titulo-acervo">Materiais cadastrados</h2>
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Ano de publicação</th>
+                            <th>Tipo</th>
+                            <th>Dados do material</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="lista-materiais">
+                        <tr>
+                            <td colspan="5">Aguardando o carregamento do acervo.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <!-- O script preenche os dados de cada material e coloca estes botões na coluna Ações:
+                <button type="button" class="btn btn-primary">Consultar</button>
+                <button type="button" class="btn btn-primary">Editar</button>
+                <button type="button" class="btn btn-primary">Excluir</button>
+                <button type="button" class="btn btn-primary">Emprestar</button> -->
+        </section>
+
+        <!-- Detalhes do material -->
+        <section id="detalhes-material" class="mb-4">
+            <h2>Detalhes do material</h2>
+
+            <p>Título: <span id="detalhe-titulo">—</span></p>
+            <p>Tipo: <span id="detalhe-tipo">—</span></p>
+            <p>Ano de publicação: <span id="detalhe-ano">—</span></p>
+            <p>Descrição: <span id="detalhe-descricao">—</span></p>
+            <p>Prazo de empréstimo em dias: <span id="detalhe-prazo">—</span></p>
+        </section>
+
+        <!-- Formulários de cadastro -->
+        <section id="cadastro" class="mb-4">
+            <h2>Cadastrar material</h2>
+
+            <div class="row">
+
+                <!-- NOVO LIVRO -->
+                <div class="col-12 col-md-6 mb-3">
+                    <form id="form-livro" method="post">
+                        <p class="fw-bold">Novo livro</p>
+
+                        <div class="mb-3">
+                            <label for="livro-titulo" class="form-label">Título</label>
+                            <input type="text" id="livro-titulo" name="titulo" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="livro-ano" class="form-label">Ano de publicação</label>
+                            <input type="number" id="livro-ano" name="anoPublicacao" class="form-control" min="0">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="livro-autor" class="form-label">Autor</label>
+                            <input type="text" id="livro-autor" name="autor" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="livro-paginas" class="form-label">Número de páginas</label>
+                            <input type="number" id="livro-paginas" name="paginas" class="form-control" min="1">
+                        </div>
+
+                        <!-- Botão cadastrar | LIVRO -->
+                        <button type="submit" class="btn btn-primary">Cadastrar livro</button>
+                    </form>
+                </div>
+
+                <!-- NOVA REVISTA -->
+                <div class="col-12 col-md-6 mb-3">
+                    <form id="form-revista" method="post">
+                        <p class="fw-bold">Nova revista</p>
+
+                        <div class="mb-3">
+                            <label for="revista-titulo" class="form-label">Título</label>
+                            <input type="text" id="revista-titulo" name="titulo" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="revista-ano" class="form-label">Ano de publicação</label>
+                            <input type="number" id="revista-ano" name="anoPublicacao" class="form-control" min="0">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="revista-edicao" class="form-label">Número da edição</label>
+                            <input type="number" id="revista-edicao" name="edicao" class="form-control" min="1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="revista-mes" class="form-label">Mês de publicação (1 a 12)</label>
+                            <input type="number" id="revista-mes" name="mesPublicacao" class="form-control" min="1">
+                        </div>
+
+                        <!-- Botão cadastrar | REVISTA -->
+                        <button type="submit" class="btn btn-primary">Cadastrar revista</button>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Formulário de edição -->
+        <section id="edicao">
+            <h2>Editar material</h2>
+
+            <p>Clique em 'Editar' na tabela para carregar os dados do material.</p>
+
+            <form id="form-edicao" method="post">
+                <div class="mb-3">
+                    <label for="edicao-titulo" class="form-label">Título</label>
+                    <input type="text" id="edicao-titulo" name="titulo" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="edicao-ano" class="form-label">Ano de publicação</label>
+                    <input type="number" id="edicao-ano" name="anoPublicacao" class="form-control" min="0">
+                </div>
+
+                <!-- O script mostra os campos do tipo selecionado na tabela -->
+                <div id="edicao-campos-livro">
+                    <p class="fw-bold">Dados do livro</p>
+
+                    <div class="mb-3">
+                        <label for="edicao-autor" class="form-label">Autor</label>
+                        <input type="text" id="edicao-autor" name="autor" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="edicao-paginas" class="form-label">Número de páginas</label>
+                        <input type="number" id="edicao-paginas" name="paginas" class="form-control" min="1">
+                    </div>
+                </div>
+
+                <div id="edicao-campos-revista">
+                    <p class="fw-bold">Dados da revista</p>
+
+                    <div class="mb-3">
+                        <label for="edicao-numero" class="form-label">Número da edição</label>
+                        <input type="number" id="edicao-numero" name="edicao" class="form-control" min="1">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="edicao-mes" class="form-label">Mês de publicação (1 a 12)</label>
+                        <input type="number" id="edicao-mes" name="mesPublicacao" class="form-control" min="1">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Salvar alterações</button>
+            </form>
+
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="text-center p-3 mt-4">
+        <p class="mb-0"> &copy; </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
