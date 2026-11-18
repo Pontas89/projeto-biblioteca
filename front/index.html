@@ -66,15 +66,42 @@
         </section>
 
         <!-- Detalhes do material -->
-        <section id="detalhes-material" class="mb-4">
-            <h2>Detalhes do material</h2>
+        <!-- Detalhes do material -->
+<section id="detalhes-material" class="mb-4">
+    <h2>Detalhes do material</h2>
 
-            <p>Título: <span id="detalhe-titulo">—</span></p>
-            <p>Tipo: <span id="detalhe-tipo">—</span></p>
-            <p>Ano de publicação: <span id="detalhe-ano">—</span></p>
-            <p>Descrição: <span id="detalhe-descricao">—</span></p>
-            <p>Prazo de empréstimo em dias: <span id="detalhe-prazo">—</span></p>
-        </section>
+     <div class="mb-3">
+        <label for="detalhe-id" class="form-label">ID do material</label>
+        <input type="number" id="detalhe-id" name="id" class="form-control" min="0">
+    </div>
+    
+    <div class="mb-3">
+        <label for="detalhe-titulo" class="form-label">Título</label>
+        <input type="text" id="detalhe-titulo" class="form-control" readonly>
+    </div>
+
+    <div class="mb-3">
+        <label for="detalhe-tipo" class="form-label">Tipo</label>
+        <input type="text" id="detalhe-tipo" class="form-control" readonly>
+    </div>
+
+    <div class="mb-3">
+        <label for="detalhe-ano" class="form-label">Ano de publicação</label>
+        <input type="number" id="detalhe-ano" class="form-control" readonly>
+    </div>
+
+    <div class="mb-3">
+        <label for="detalhe-descricao" class="form-label">Descrição</label>
+        <input type="text" id="detalhe-descricao" class="form-control" readonly>
+    </div>
+
+    <div class="mb-3">
+        <label for="detalhe-prazo" class="form-label">Prazo de empréstimo em dias</label>
+        <input type="number" id="detalhe-prazo" class="form-control" readonly>
+    </div>
+
+    <button id="consultar-material" class="btn btn-primary">Consultar</button>
+</section>
 
         <!-- Formulários de cadastro -->
         <section id="cadastro" class="mb-4">
@@ -109,6 +136,8 @@
 
                         <!-- Botão cadastrar | LIVRO -->
                         <button type="submit" class="btn btn-primary">Cadastrar livro</button>
+                        <div id="status" class=""></div>
+                        <pre id="saida" class=""></pre>
                     </form>
                 </div>
 
