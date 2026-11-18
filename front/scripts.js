@@ -2,22 +2,22 @@ const botaoConsultar = document.querySelector("#consultar-material");
 const buscarID = document.querySelector("#detalhe-id");
 
 
-botaoConsultar.addEventListener("click", function(){
+botaoConsultar.addEventListener("click", function () {
     let idDigitado = Number(buscarID.value);
 
     const urlBuscarId = "https://localhost:7000/api/Materiais/" + idDigitado;
 
     fetch(urlBuscarId)
-        .then(function(resposta){
+        .then(function (resposta) {
             if (!resposta.ok) throw new Error("Material não encontrado.");
             return resposta.json();
         })
-        .then(function(dados){
+        .then(function (dados) {
             saida.textContent = JSON.stringify(dados, null, 2);
             status.textContent = "GET realizado com sucesso!";
             status.className = "alert alert-success mt-3";
         })
-        .catch(function(erro){
+        .catch(function (erro) {
             saida.textContent = erro.message
             status.textContent = "A API respondeu com erro ou não foi feito nenhum cadastro!";
             status.className = "alert alert-danger mt-3"
@@ -34,7 +34,7 @@ const livroPaginas = document.querySelector("#livro-paginas");
 
 const API_URL_LIVRO = "https://localhost:7000/api/Materiais/livro";
 
-formLivro.addEventListener("submit", function(evento){
+formLivro.addEventListener("submit", function (evento) {
     evento.preventDefault();
 
     const NovoLivro = {
@@ -45,26 +45,26 @@ formLivro.addEventListener("submit", function(evento){
     }
 
     fetch(API_URL_LIVRO, {
-    method: "POST",
-    body: JSON.stringify(NovoLivro),
-    headers: {
-        "Content-Type": "application/json; charset=UTF-8"
-    }
+        method: "POST",
+        body: JSON.stringify(NovoLivro),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        }
     })
-    .then(function(resposta){
-        if(!resposta.ok) throw new Error("A API respondeu com ERRO.");
-        return resposta.json();
-    })
-    .then(function(dados){
-        saida.textContent = JSON.stringify(dados, null, 2);
-        status.textContent = "POST realizado com sucesso."
-        status.className = "alert alert-success mt-3"
-    })
-    .catch(function(erro){
-        saida.textContent = erro.message;
-        status.textContent = "Não foi possível realizar o cadastro";
-        status.className = "alert alert-danger mt-3"
-    })
+        .then(function (resposta) {
+            if (!resposta.ok) throw new Error("A API respondeu com ERRO.");
+            return resposta.json();
+        })
+        .then(function (dados) {
+            saida.textContent = JSON.stringify(dados, null, 2);
+            status.textContent = "POST realizado com sucesso."
+            status.className = "alert alert-success mt-3"
+        })
+        .catch(function (erro) {
+            saida.textContent = erro.message;
+            status.textContent = "Não foi possível realizar o cadastro";
+            status.className = "alert alert-danger mt-3"
+        })
 
 })
 
@@ -77,7 +77,7 @@ const revistaMes = document.querySelector("#revista-mes");
 
 const API_URL_REVISTA = "https://localhost:7000/api/Materiais/revista"
 
-formRevista.addEventListener("submit", function(evento){
+formRevista.addEventListener("submit", function (evento) {
     evento.preventDefault();
 
     const NovaRevista = {
@@ -88,26 +88,26 @@ formRevista.addEventListener("submit", function(evento){
     }
 
     fetch(API_URL_REVISTA, {
-    method: "POST",
-    body: JSON.stringify(NovaRevista),
-    headers: {
-        "Content-Type": "application/json; charset=UTF-8"
-    }
+        method: "POST",
+        body: JSON.stringify(NovaRevista),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        }
     })
-    .then(function(resposta){
-        if(!resposta.ok) throw new Error("A API respondeu com ERRO.");
-        return resposta.json();
-    })
-    .then(function(dados){
-        saida.textContent = JSON.stringify(dados, null, 2);
-        status.textContent = "POST realizado com sucesso."
-        status.className = "alert alert-success mt-3"
-    })
-    .catch(function(erro){
-        saida.textContent = erro.message;
-        status.textContent = "Não foi possível realizar o cadastro";
-        status.className = "alert alert-danger mt-3"
-    })
+        .then(function (resposta) {
+            if (!resposta.ok) throw new Error("A API respondeu com ERRO.");
+            return resposta.json();
+        })
+        .then(function (dados) {
+            saida.textContent = JSON.stringify(dados, null, 2);
+            status.textContent = "POST realizado com sucesso."
+            status.className = "alert alert-success mt-3"
+        })
+        .catch(function (erro) {
+            saida.textContent = erro.message;
+            status.textContent = "Não foi possível realizar o cadastro";
+            status.className = "alert alert-danger mt-3"
+        })
 
 })
 
@@ -119,18 +119,18 @@ const totalLivros = document.querySelector("#total-livros");
 const totalRevistas = document.querySelector("#total-revistas");
 
 // Livro tem "autor"; revista não. É assim que o JS descobre o tipo.
-function descobrirTipo(material){
+function descobrirTipo(material) {
     if ("autor" in material) return "livro";
     return "revista";
 }
 
-function criarCelula(texto){
+function criarCelula(texto) {
     const celula = document.createElement("td");
     celula.textContent = texto;
     return celula;
 }
 
-function criarBotao(texto, aoClicar){
+function criarBotao(texto, aoClicar) {
     const botao = document.createElement("button");
     botao.type = "button";
     botao.className = "btn btn-primary";
@@ -139,30 +139,30 @@ function criarBotao(texto, aoClicar){
     return botao;
 }
 
-function carregarAcervo(){
+function carregarAcervo() {
     fetch(API_URL_MATERIAIS)
-        .then(function(resposta){
-            if(!resposta.ok) throw new Error("Não foi possível carregar o acervo.");
+        .then(function (resposta) {
+            if (!resposta.ok) throw new Error("Não foi possível carregar o acervo.");
             return resposta.json();
         })
-        .then(function(lista){
+        .then(function (lista) {
             // A lista vem só com os campos comuns (MaterialBiblioteca).
             // Buscamos cada material pelo id, que vem completo (Livro ou Revista).
-            const buscas = lista.map(function(item){
-                return fetch(API_URL_MATERIAIS + "/" + item.id).then(function(resposta){
-                    if(!resposta.ok) throw new Error("Não foi possível carregar o material " + item.id + ".");
+            const buscas = lista.map(function (item) {
+                return fetch(API_URL_MATERIAIS + "/" + item.id).then(function (resposta) {
+                    if (!resposta.ok) throw new Error("Não foi possível carregar o material " + item.id + ".");
                     return resposta.json();
                 });
             });
             return Promise.all(buscas);
         })
-        .then(function(materiais){
+        .then(function (materiais) {
             listaMateriais.textContent = "";
 
             let livros = 0;
             let revistas = 0;
 
-            if (materiais.length === 0){
+            if (materiais.length === 0) {
                 const linhaVazia = document.createElement("tr");
                 const celula = criarCelula("Nenhum material cadastrado.");
                 celula.colSpan = 5;
@@ -170,11 +170,11 @@ function carregarAcervo(){
                 listaMateriais.appendChild(linhaVazia);
             }
 
-            for (const material of materiais){
+            for (const material of materiais) {
                 const tipo = descobrirTipo(material);
                 let dadosDoMaterial;
 
-                if (tipo === "livro"){
+                if (tipo === "livro") {
                     livros++;
                     dadosDoMaterial = "Autor: " + material.autor + " | Páginas: " + material.paginas;
                 } else {
@@ -189,11 +189,11 @@ function carregarAcervo(){
                 linha.appendChild(criarCelula(dadosDoMaterial));
 
                 const acoes = document.createElement("td");
-                acoes.appendChild(criarBotao("Consultar", function(){
+                acoes.appendChild(criarBotao("Consultar", function () {
                     buscarID.value = material.id;
                     botaoConsultar.click();
                 }));
-                acoes.appendChild(criarBotao("Editar", function(){
+                acoes.appendChild(criarBotao("Editar", function () {
                     carregarEdicao(material);
                     document.querySelector("#edicao").scrollIntoView({ behavior: "smooth" });
                 }));
@@ -206,7 +206,7 @@ function carregarAcervo(){
             totalLivros.textContent = livros;
             totalRevistas.textContent = revistas;
         })
-        .catch(function(erro){
+        .catch(function (erro) {
             saida.textContent = erro.message;
             status.textContent = "Não foi possível carregar o acervo.";
             status.className = "alert alert-danger mt-3"
@@ -232,14 +232,14 @@ let tipoEmEdicao = null;
 camposLivro.style.display = "none";
 camposRevista.style.display = "none";
 
-function carregarEdicao(material){
+function carregarEdicao(material) {
     idEmEdicao = material.id;
     tipoEmEdicao = descobrirTipo(material);
 
     edicaoTitulo.value = material.titulo;
     edicaoAno.value = material.anoPublicacao;
 
-    if (tipoEmEdicao === "livro"){
+    if (tipoEmEdicao === "livro") {
         edicaoAutor.value = material.autor;
         edicaoPaginas.value = material.paginas;
         camposLivro.style.display = "block";
@@ -252,10 +252,10 @@ function carregarEdicao(material){
     }
 }
 
-formEdicao.addEventListener("submit", function(evento){
+formEdicao.addEventListener("submit", function (evento) {
     evento.preventDefault();
 
-    if (idEmEdicao === null){
+    if (idEmEdicao === null) {
         saida.textContent = "Clique em 'Editar' na tabela antes de salvar.";
         status.textContent = "Nenhum material selecionado.";
         status.className = "alert alert-danger mt-3"
@@ -264,7 +264,7 @@ formEdicao.addEventListener("submit", function(evento){
 
     let MaterialAtualizado;
 
-    if (tipoEmEdicao === "livro"){
+    if (tipoEmEdicao === "livro") {
         MaterialAtualizado = {
             Titulo: edicaoTitulo.value,
             AnoPublicacao: Number(edicaoAno.value),
