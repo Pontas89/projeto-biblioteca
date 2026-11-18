@@ -1,0 +1,344 @@
+
+/* =====================================
+   1. CONFIGURAÇÕES GERAIS
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f1f5f9;
+    color: #334155;
+    line-height: 1.6;
+}
+
+/* =====================================
+   2. CONTEÚDO PRINCIPAL
+===================================== */
+
+main {
+    max-width: 1250px;
+    margin: 30px auto;
+    padding: 25px !important;
+}
+
+/* =====================================
+   3. CABEÇALHO
+===================================== */
+
+header {
+    background: linear-gradient(135deg, #172554, #2563eb);
+    color: #ffffff;
+    padding: 35px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* =====================================
+   4. TÍTULOS
+===================================== */
+
+h2 {
+    color: #1e3a8a;
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #dbeafe;
+}
+
+/* =====================================
+   5. SEÇÕES
+===================================== */
+
+section {
+    background-color: #ffffff;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* =====================================
+   6. MENSAGENS DE SUCESSO E ERRO
+===================================== */
+
+#mensagem-sucesso:empty,
+#mensagem-erro:empty {
+    display: none;
+}
+
+#mensagem-sucesso {
+    color: #166534;
+    background-color: #dcfce7;
+    border-left: 5px solid #16a34a;
+    padding: 14px;
+    border-radius: 7px;
+    margin-bottom: 15px;
+}
+
+#mensagem-erro {
+    color: #991b1b;
+    background-color: #fee2e2;
+    border-left: 5px solid #dc2626;
+    padding: 14px;
+    border-radius: 7px;
+    margin-bottom: 15px;
+}
+
+/* =====================================
+   7. RESUMO DO ACERVO
+===================================== */
+
+#resumo p {
+    background-color: #eff6ff;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-left: 4px solid #2563eb;
+    border-radius: 7px;
+}
+
+#resumo span {
+    color: #1e40af;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* =====================================
+   8. TABELA DE MATERIAIS
+===================================== */
+
+.table-responsive {
+    border-radius: 8px;
+}
+
+table {
+    margin-bottom: 0 !important;
+}
+
+thead th {
+    background-color: #1e3a8a !important;
+    color: #ffffff !important;
+    padding: 15px !important;
+    white-space: nowrap;
+    border: none;
+}
+
+tbody td {
+    padding: 14px !important;
+    vertical-align: middle;
+}
+
+tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: #eff6ff;
+}
+
+/* =====================================
+   9. BOTÕES DE AÇÃO
+===================================== */
+
+.btn {
+    border-radius: 7px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+.btn-primary:hover {
+    background-color: #1e40af;
+    border-color: #1e40af;
+    transform: translateY(-2px);
+}
+
+.btn-danger:hover,
+.btn-success:hover,
+.btn-warning:hover {
+    transform: translateY(-2px);
+}
+
+/* Espaçamento entre botões da tabela */
+
+td .btn {
+    margin: 3px;
+    font-size: 13px;
+}
+
+/* =====================================
+   10. DETALHES DO MATERIAL
+===================================== */
+
+#detalhes-material p {
+    background-color: #f8fafc;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    border-left: 3px solid #93c5fd;
+}
+
+#detalhes-material span {
+    color: #1e40af;
+    font-weight: bold;
+}
+
+/* =====================================
+   11. FORMULÁRIOS
+===================================== */
+
+form {
+    background-color: #f8fafc;
+    padding: 22px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    height: 100%;
+}
+
+form p.fw-bold {
+    color: #1e3a8a;
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    color: #334155;
+    font-weight: 600;
+}
+
+.form-control {
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    padding: 11px;
+}
+
+.form-control:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* =====================================
+   12. FORMULÁRIO DE EDIÇÃO
+===================================== */
+
+#edicao > p {
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+#edicao-campos-livro,
+#edicao-campos-revista {
+    margin-top: 20px;
+}
+
+#edicao-campos-livro p,
+#edicao-campos-revista p {
+    color: #1e3a8a;
+    font-size: 17px;
+}
+
+/* =====================================
+   13. RODAPÉ
+===================================== */
+
+footer {
+    background-color: #172554;
+    color: #ffffff;
+    padding: 20px !important;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* =====================================
+   14. TABLETS
+===================================== */
+
+@media (max-width: 768px) {
+
+    main {
+        padding: 15px !important;
+        margin: 10px auto;
+    }
+
+    header {
+        padding: 25px 15px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    section {
+        padding: 18px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    form {
+        padding: 17px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
+
+/* =====================================
+   15. CELULARES
+===================================== */
+
+@media (max-width: 480px) {
+
+    main {
+        padding: 10px !important;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    section {
+        padding: 14px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    #resumo p {
+        font-size: 14px;
+    }
+
+    form {
+        padding: 14px;
+    }
+
+    .btn {
+        padding: 9px 12px;
+    }
+
+    td .btn {
+        margin: 3px 1px;
+    }
+}
